@@ -26,7 +26,6 @@ class Solution {
                 if(tokens[i].equals("/")) {
                     st.push(val2/val1);
                 }
-                System.out.println();
             }
         }
         return st.pop();        
