@@ -1,5 +1,4 @@
 class Solution {
-    // 7:25 - 7:35
     public int longestConsecutive(int[] nums) {
         int res = 0; 
         // Add to the HashSet
@@ -8,6 +7,10 @@ class Solution {
             hs.add(i);
         }
         // Traverse through an array curr
+        // If previous ele not exist.. 
+        //      the move till we find nextEle
+        //      max result = diff between nextEle - currEle
+
         for(int currNum: nums) {
             if(!hs.contains(currNum - 1)) {
                 int currRight = currNum + 1;
