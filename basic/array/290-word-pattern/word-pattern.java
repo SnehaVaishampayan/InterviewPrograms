@@ -26,12 +26,6 @@ class Solution {
             }
             patternItr++;
         }
-        StringBuilder sb = new StringBuilder();
-        for(String eachWord:  words){
-            sb.append(hm.get(eachWord));
-        }
-        
-        // return sb.toString().equals(pattern);
         return true;
     }
 }
