@@ -1,9 +1,11 @@
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
         // Traverse .. 
-        //     unitl current sum is < target
-        //     if == target.. calc resultLen 
-        //     if currSum > target.. move start
+        //     currSum + endEle
+        //     while currentSum >= target.. 
+        //          curSum - startEle 
+        //          calc resultLen 
+        //          move start
 
         int start = 0;
         int end = 0;
@@ -20,8 +22,6 @@ class Solution {
                 start++;
             }
         }
-        System.out.println("start " + start);
-        System.out.println("end " + end);
         return resultLen  == Integer.MAX_VALUE ? 0 : resultLen;
     }
 }
