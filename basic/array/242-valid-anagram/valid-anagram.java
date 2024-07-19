@@ -14,6 +14,6 @@ class Solution {
                 return false;
             }
         }
-        return true;//sArr.equals(tArr);
+        return true;
     }
 }
