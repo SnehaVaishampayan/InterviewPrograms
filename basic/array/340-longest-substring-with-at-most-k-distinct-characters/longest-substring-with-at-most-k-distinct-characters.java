@@ -50,43 +50,4 @@ class Solution {
         }
         return Math.max(result, s.length()-start);
     }
-        // // HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-        // // if(k == 0 || s == null || s.length()==0)
-        // //     return 0;
-
-        // // if(s.length()<k)
-        // //     return s.length();
-
-        // int result = k;
-        // int start = 0;
-        // for(int end = 0; end < s.length(); end++) {
-        //      char currChar = s.charAt(end);
-
-        //     // if(map.containsKey(currChar)){
-        //     //     map.put(currChar, map.get(currChar) + 1);
-        //     // }else{
-        //     //     map.put(currChar, 1);
-        //     // }
-        //     map.put(currChar, end);
-
-
-        //     if(map.size() > k){
-
-        //         result = Math.max(result, end - start);
-        //         start = map.get(s.charAt(start)) + 1;
-        //         // while(map.size() > k) {
-        //             // char fc = s.charAt(start);
-        //             // if(map.get(fc)==1){
-        //             //     map.remove(fc);
-        //             // }
-        //             // else {
-        //             // map.put(fc, map.get(fc)-1);
-        //             // }
-                    
-        //         // start++;
-        //         // }        
-        //     }
-        // }
-        // return Math.max(result, s.length()-start);
-    // }
 }
