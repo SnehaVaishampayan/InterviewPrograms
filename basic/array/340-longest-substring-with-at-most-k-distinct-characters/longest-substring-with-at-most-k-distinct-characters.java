@@ -1,24 +1,15 @@
 class Solution {
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
-        // int start = 0; 
-        // int end = 0;
-        // HashMap.. char - lastOccurenceIndex
-        // Traverse string..
-        //     Add/update char to hashMap.. char - lastOccurenceIndex
-        //     if hm.size() > k .. 
-        //         startChar lastOccurence.. 
-        //         end = start 
-        //         clear hashMap
-
-        // Walkthru 
-        // e = 2 ; c = 1 
-        // size <= k
-        // e= 2 ; c = 1; b = 3
-        // now size > k 
-        //  startChar = e 
-        //  startCharLastOccurence= 2
-        // start = startCharLastOccurence + 1 = 3 
-
+        //  startPtr - endPtr
+        //  HashMap - Character-Count
+        //  Traverse with endPtr      
+        //      put eachChar HashMap - Character-Count
+        //      if hashMap size > k .. means more than K distinct characters. 
+        //          until size <= k .. 
+        //          start++
+        //          reduce/Shrink start.. 
+        //          remove startChars from hashmap .. 
+        
         if(s == null || s.length() == 0 ){
             return 0;
         } 
