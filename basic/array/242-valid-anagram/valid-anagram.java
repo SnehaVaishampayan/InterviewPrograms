@@ -1,5 +1,11 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
+        // Sort charArray s and t
+        // match lengths 
+        // Traverse chars.. 
+        //      if mismatch.. 
+        //          return false. 
+        
         if(s.length() != t.length()) {
             return false;
         }
