@@ -10,8 +10,6 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode resultHead = new ListNode();
-        ListNode resultCurr = resultHead;
         if(list1 == null && list2 == null) {
             return null;
         }
@@ -21,29 +19,41 @@ class Solution {
         if(list2 == null) {
             return list1;
         }
+         ListNode resHead = null;
+        if(list1.val < list2.val ) {
+            resHead = list1;
+            list1 = list1.next;
+        }
+        else {
+            resHead = list2;
+            list2 = list2.next;          
+        }
 
-        while(list1 != null && list2 != null) {
-            if( list1.val < list2.val ) {
-                resultCurr.next = list1;
+        
+        ListNode currNode = resHead;
+        while(list1 != null && list2 != null ){
+            if(list1.val < list2.val) {
+                currNode.next = list1;
                 list1 = list1.next;
             }
             else {
-                resultCurr.next = list2;
+                currNode.next = list2;
                 list2 = list2.next;
             }
-            
-            resultCurr = resultCurr.next;
+            currNode = currNode.next;
         }
+        System.out.println("cc " + currNode.val);
+
         while(list1 != null) {
-            resultCurr.next = list1;
+            currNode.next = list1;
             list1 = list1.next;
-            resultCurr = resultCurr.next;
+            currNode = currNode.next;
         }
         while(list2 != null) {
-            resultCurr.next = list2;
+            currNode.next = list2;
             list2 = list2.next;
-            resultCurr = resultCurr.next;
+            currNode = currNode.next;
         }
-        return resultHead.next;
+        return resHead;
     }
 }
