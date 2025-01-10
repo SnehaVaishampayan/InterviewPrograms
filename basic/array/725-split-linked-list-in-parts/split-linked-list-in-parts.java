@@ -59,7 +59,6 @@ class Solution {
         ListNode prev = null;
         while(itr != null && i < k) {
             int currListLen = partLengths[i];            
-            // ListNode currListHead = result[i];
             result[i] = itr;
             while(currListLen != 0 && itr != null ) {
                 prev = itr;
