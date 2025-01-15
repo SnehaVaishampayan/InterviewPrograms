@@ -1,29 +1,31 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-        // Given -> non decreasing, increasing sorted order
-        // in-place solution
-        // return count of unque elements
-
-        // Traverse -> if we see runnerPtr == mainPtr, runnerPTr++
-
-        if(nums == null || nums.length == 0) {
-            return 0;
+        //  Traverse array
+        //      selectedEle .. 
+        //      resItr == selectedEle
+        //      while currEle == selectedEle.. 
+        //          move itr
+        
+        if(nums.length <= 1) {
+            return nums.length;
         }
-        if(nums.length == 1) {
-            return 1;
-        }
-
-        int mainPtr = 0; int runnerPtr = 1;
-        while(runnerPtr < nums.length) {
-            if(nums[runnerPtr] == nums[mainPtr]) {                
-                runnerPtr++;
+        int resultItr = 1;
+        int itr = 1;
+        int selectedEle = nums[0];
+        
+        while(itr < nums.length) {
+            while(itr < nums.length && nums[itr] == selectedEle) {
+                itr++;
             }
-            else {
-                mainPtr++;
-                nums[mainPtr] = nums[runnerPtr];
-                runnerPtr++;
+            if(itr >= nums.length ) {
+                return resultItr;
+            }
+            else{                
+                nums[resultItr] = nums[itr];
+                selectedEle = nums[resultItr];
+                resultItr++;
             }
         }
-        return mainPtr+1;
+        return resultItr;
     }
 }
