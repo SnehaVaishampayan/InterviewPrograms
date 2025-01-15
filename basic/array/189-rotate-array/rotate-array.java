@@ -1,26 +1,26 @@
 class Solution {
     public void rotate(int[] nums, int k) {
-        //  Swap first nums.length-k elements.. 0 - (nums.length-k) 7-3 = 4
-        //  Swap nums.length-k - nums.length-1 
-        //  Swap full array
-        if(nums == null || nums.length <= 0 ) {
-            return;
-        }
-        if (k > nums.length) {
+        if(nums == null || nums.length <= 1) {
+            return ;
+        } 
+        if(nums.length <= k) {
             k = k % nums.length;
         }
-        int pivot = nums.length - k;  // 4
-        nums = swapArray(nums, 0, pivot-1);
-        nums = swapArray(nums, pivot, nums.length-1);
-        nums = swapArray(nums, 0, nums.length-1);
+
+        // rotate array len - k = 7 - 3 .. 4 that is 0 1 2 3
+        reverseArray(nums, 0, nums.length - k - 1);
+        reverseArray(nums, nums.length - k, nums.length - 1);
+        reverseArray(nums, 0, nums.length - 1);
+        
     }
-    private int[] swapArray(int[] nums, int start, int end) {
-        while(start <= end) {
-            int temp = nums[start];
-            nums[start] = nums[end];
-            nums[end] = temp;
-            start++; end--;
+
+    private void reverseArray(int[] arr, int left, int right) {
+        while(left < right) {
+            int temp = arr[right];
+            arr[right] = arr[left];
+            arr[left] = temp;
+            left++;
+            right--;
         }
-        return nums;
     }
 }
