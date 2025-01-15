@@ -1,20 +1,14 @@
 class Solution {
     public int removeElement(int[] nums, int val) {
-        // mainPtr .. valPtr .. 
-        // if nums[valPtr ] != val.. put at mainPtr location
-
-        int mainPtr = 0;
-        int valPtr = 0;
-        if(nums == null || nums.length == 0) {
-            return 0;
-        }
-        while(valPtr < nums.length) {
-            if(nums[valPtr] != val) {
-                nums[mainPtr] = nums[valPtr];
-                mainPtr++;                
+        // return num of ele not equal to val
+        int result = 0;
+        
+        for(int i: nums) {
+            if(i != val) {
+                nums[result] = i;
+                result++;
             }
-            valPtr++;
         }
-        return mainPtr;
+        return result;
     }
 }
