@@ -4,14 +4,17 @@ class Solution {
 
     public boolean canJump(int[] nums) {
 
-        int lastStepIndex = nums.length - 1;
+        int destinationIndex = nums.length - 1;
 
-        for(int i = lastStepIndex - 1; i >= 0 ; i--) {
-
-            if(lastStepIndex <= (nums[i] + i) ) { 
-                lastStepIndex = i;
+        for(int currIndex = destinationIndex - 1; currIndex >= 0 ; currIndex--) {
+                
+            // destinationIndex is reachable from currSteps + currIndex
+            if(destinationIndex <= (currIndex + nums[currIndex]) ) {   
+                destinationIndex = currIndex;           // update destinationIndex to currIndex
             }
         }
-        return lastStepIndex == 0;
+        return destinationIndex == 0;
     }
 }
+
+// 5 <= 
