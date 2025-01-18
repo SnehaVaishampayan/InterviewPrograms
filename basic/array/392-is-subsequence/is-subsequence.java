@@ -31,13 +31,6 @@ class Solution {
                 }
             }
         }
-        return sItr >= s.length();
+        return false;//sItr >= s.length();
     }
-    // private boolean matchNextChars(String s, String t, int sItr, int tItr) {
-    //     while(s.charAt(sItr) == t.charAt(tItr)) {
-    //         sItr++;
-    //         tItr++;
-    //     }
-    //     return sItr >= s.length();
-    // }
 }
