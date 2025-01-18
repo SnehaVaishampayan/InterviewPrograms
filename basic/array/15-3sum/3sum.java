@@ -26,10 +26,13 @@ class Solution {
                         rightPtr--;
                     }
                     else {
-                        List<Integer> al = new ArrayList<>();
-                        al.add(nums[firstPtr]); al.add(nums[leftPtr]); al.add(nums[rightPtr]); 
-                        result.add(al);
+
+                        List<Integer> res_al = new ArrayList<>();
+                        res_al.add(nums[firstPtr]); res_al.add(nums[leftPtr]); res_al.add(nums[rightPtr]); 
+                        result.add(res_al);
+
                         leftPtr++; rightPtr--;
+                        
                         while((leftPtr < rightPtr) && (nums[leftPtr] == nums[leftPtr-1])){
                             leftPtr++;
                         }
