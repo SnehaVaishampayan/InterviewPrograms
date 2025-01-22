@@ -2,6 +2,8 @@ class Solution {
     public int maxArea(int[] height) {
 
         // TEMPLATE TWO PTRS - leftPtr / rightPtr
+        // TRAVERSE both ends - CALCULATE currArea - GET maxArea - MOVE smaller height 
+
         //  Traversing from both ends 
         //      calc currArea and get maxArea
         //      int currArea = (rightPtr-leftPtr) * Math.min(height[leftPtr], height[rightPtr]);
@@ -16,16 +18,14 @@ class Solution {
         int leftPtr = 0;
         int rightPtr = height.length-1;;
         while(leftPtr < rightPtr) {
-            // calc currArea and get maxArea
+            // calc currArea and get maxArea and move smaller height 
             int currArea = (rightPtr-leftPtr) * Math.min(height[leftPtr], height[rightPtr]);
            
             maxResultArea = Math.max(maxResultArea, currArea);
-            if(height[leftPtr] < height[rightPtr]) {
+            if (height[leftPtr] < height[rightPtr]) 
                 leftPtr++;
-            }
-            else{
-                rightPtr--;
-            }
+            else 
+                rightPtr-- ;
         }
         return maxResultArea;
     }
