@@ -21,14 +21,17 @@ class Solution {
         }
         int result = candies[candies.length - 1];
         for(int i = ratings.length - 2; i >= 0; i-- ) {
-            int newCandies = 1; 
-
+            // int newCandies = 1; 
+            int prevCandiesCount = candies[i];
             if(ratings[i] > ratings[i+1]) {     // Descending order
-                newCandies = candies[i+1] + 1;
+                candies[i] = candies[i+1] + 1;
             }
-            result += Math.max(newCandies, candies[i]);
-            candies[i] = newCandies;
+
+            result += Math.max(prevCandiesCount, candies[i]);
+            // candies[i] = newCandies;
         }
+
+        
         return result;
     }
 }
