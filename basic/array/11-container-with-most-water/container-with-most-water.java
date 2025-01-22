@@ -1,6 +1,15 @@
 class Solution {
     public int maxArea(int[] height) {
-        int maxResultArea = 0;//Integer.MIN_VALUE;
+
+        // TEMPLATE TWO PTRS - leftPtr / rightPtr
+        //  Traversing from both ends 
+        //      calc currArea and get maxArea
+        //      int currArea = (rightPtr-leftPtr) * Math.min(height[leftPtr], height[rightPtr]);
+        //      get  maxResultArea = MAX of maxResultArea, currArea
+        //      move smaller of height[leftPtr], height[rightPtr]
+
+        
+        int maxResultArea = 0;
         if(height == null || height.length == 0) {
             return 0;
         }
