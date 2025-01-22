@@ -1,30 +1,54 @@
 class Solution {
     public boolean wordPattern(String pattern, String s) {
-        String[] words = s.split(" ");
+        // Separate words in words[]
+        // if words.length != pattern.length
+        //      no match
+
+        // maintain TWO hashmaps - <Character, String> / <String, Char> 
+        //          patternChar <-> word
+        //          word        <-> patternChar
+
+        // case 1 .. patternChar in hm1 ..  if hm.get matches word              .. continue
+        // case 2 .. patternChar in hm1 ..  if hm.get Not matches word          ..  false
+        // case 3 .. word in hm2         .. if hm.get matches patternChar       ..  continue 
+        // case 4 .. word in hm2         .. if hm.get NOT matches patternChar   ..  false 
+
+        String[] words = s.trim().split(" ");
         if(words.length != pattern.length()) {
             return false;
         }
-        Map<String, Character> hm = new HashMap<>();
-        // int chCount = 0;
-        // System.out.println((char) (chCount + 'a'));
-        int patternItr = 0;
-        for(String eachWord:  words){
-            if(patternItr >= pattern.length()) {
-                return false;
-            }
-            if(!hm.containsKey(eachWord)) {
-                if(hm.values().contains(pattern.charAt(patternItr)) ) {
+        Map<Character, String> hm1 = new HashMap<>();
+        Map<String, Character> hm2 = new HashMap<>();
+
+        for(int i = 0; i < words.length; i++ ) {
+            String eachWord = words[i]; 
+            char patternChar = pattern.charAt(i);
+            System.out.println("eachWord " + eachWord);
+            System.out.println("patternChar " + patternChar);
+
+            // Case 1
+            if(hm1.containsKey(patternChar)) {
+                if(!hm1.get(patternChar).equals(eachWord)) {
                     return false;
                 }
-                hm.put(eachWord, pattern.charAt(patternItr));                
+                else{
+                    continue;
+                }
+            }
+            // Case 3
+            else if(hm2.containsKey(eachWord)) {
+                if(hm2.get(eachWord) != patternChar) {
+                    return false;
+                }
+                else {
+                    continue;
+                }
             }
             else {
-                // check if char matches
-                if(pattern.charAt(patternItr) != hm.get(eachWord)){
-                    return false;
-                }
+                // Add in both maps
+                hm1.put(patternChar, eachWord);
+                hm2.put(eachWord, patternChar);   
             }
-            patternItr++;
         }
         return true;
     }
