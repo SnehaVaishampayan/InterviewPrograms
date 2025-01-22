@@ -2,42 +2,34 @@ class Solution {
     public int findMin(int[] nums) {
         // TEMPLATE Binary Search
 
-        // Recursively 
+        // Recursively while start <= end
         //      find mid
-        //      for mid .. check if it is min by comparing with sides.. 
-        //      if not move to unsorted part
-        //      if start < end .. means sorted.. 
-        //      else .. search here 
+        //      if end-start == 1 .. while termination.. return end
+        //      Look up to unsorted part
+        //      if start > end .. means unsorted.. end = mid
+        //      else .. search here .. start = mid
 
 
         if(nums == null || nums.length == 0) {
             return -1;
         } 
-        if( nums.length == 1) {
-            return nums[0];
-        }
-        if(nums.length == 2) {
-            return nums[0] < nums[1] ? nums[0] : nums[1];
-        }
+        // if( nums.length == 1) {
+        //     return nums[0];
+        // }
 
         int start = 0; int end = nums.length-1;
-
-        if(nums[start] <= nums[end]) {
-            return nums[start];
-        }
-
         while(start <= end) {
-            int mid = start + (end - start) / 2;
 
-            if( (end-start) == 1) {         // While terminating condition
-                return nums[end];
+            if(nums[start] <= nums[end]) {
+                return nums[start];
             }
 
-            if( nums[start] >= nums[mid]){      // UNSorted Array
+            int mid = start + (end - start) / 2;
+            if( nums[start] > nums[mid]){      // UNSorted Array
                 end = mid;
             }
             else {
-                start = mid;    
+                start = mid+1;    
             }
         }
         return -1;
