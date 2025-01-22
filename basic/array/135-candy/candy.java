@@ -19,19 +19,16 @@ class Solution {
                 candies[i] = 1;
             }
         }
-        int result = candies[candies.length - 1];
+        int result = candies[candies.length - 1];   // *****
         for(int i = ratings.length - 2; i >= 0; i-- ) {
-            // int newCandies = 1; 
+
             int prevCandiesCount = candies[i];
+
             if(ratings[i] > ratings[i+1]) {     // Descending order
                 candies[i] = candies[i+1] + 1;
             }
-
             result += Math.max(prevCandiesCount, candies[i]);
-            // candies[i] = newCandies;
         }
-
-        
         return result;
     }
 }
