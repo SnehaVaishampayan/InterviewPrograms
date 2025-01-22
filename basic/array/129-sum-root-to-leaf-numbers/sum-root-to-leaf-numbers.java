@@ -16,28 +16,27 @@
 class Solution {
 
     public int sumNumbers(TreeNode root) {
-        if(root == null) {
-            return 0;
-        }
+        
+        // if(root == null) {
+        //     return 0;
+        // }
         return rec_dfs_sum(root, 0, 0);
     }
 
-    public int rec_dfs_sum(TreeNode node, int currSum, int result_sum) {
+    public int rec_dfs_sum(TreeNode node, int curr_path_sum, int result_sum) {
 
         if(node == null) {
             return result_sum;
         }
 
-        currSum = (currSum * 10) + node.val;
+        curr_path_sum = (curr_path_sum * 10) + node.val; // ????
 
         if(node.left == null && node.right == null) {
-            result_sum += currSum;
-            return result_sum;
+            System.out.println(" This path sum " + curr_path_sum);
+            return result_sum + curr_path_sum;
         }
 
-        return  rec_dfs_sum(node.left, currSum, result_sum ) 
-                + rec_dfs_sum(node.right, currSum, result_sum);
-
-
+        return  rec_dfs_sum(node.left, curr_path_sum, result_sum ) 
+                + rec_dfs_sum(node.right, curr_path_sum, result_sum);
     }
 }
