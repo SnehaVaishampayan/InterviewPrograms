@@ -28,7 +28,7 @@ class Solution {
             while((nums[start] == nums[end]) && (start != end)) {
                 start++;
             }
-            
+
             if(nums[start] <= nums[end]) {
                 return nums[start];
             }
@@ -38,7 +38,7 @@ class Solution {
                 end = mid;
             }
             else {
-                start = mid+1;    
+                start = mid+1;      // Move forward.. its While termination condition
             }
         }
         return -1;
