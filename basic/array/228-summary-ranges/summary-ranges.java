@@ -12,26 +12,24 @@ class Solution {
              result.add(nums[0]+"");
              return result;
         }
-        int startPtr = 0; int endPtr = 1;
+     
+        int startPtr = 0;
+        int endPtr = 1;
         while(endPtr < nums.length) {
-            if(nums[endPtr] == nums[endPtr-1] + 1 ){
+            while((endPtr < nums.length) && (nums[endPtr-1] + 1) == nums[endPtr]) {
                 endPtr++;
+            }
+            if(startPtr == endPtr-1) {
+                result.add(nums[startPtr] + "");
             }
             else {
-                if(nums[startPtr] == nums[endPtr-1])
-                    result.add(nums[startPtr]+"");
-                else {
-                    result.add(nums[startPtr]+"->"+nums[endPtr-1]);                
-                }
-                
-                startPtr = endPtr;
-                endPtr++;
+                result.add(nums[startPtr] + "->" + nums[endPtr-1]);
             }
+            startPtr = endPtr;
+            endPtr++;
         }
-        if(nums[startPtr] == nums[endPtr-1])
+        if(startPtr < nums.length) {
             result.add(nums[startPtr]+"");
-        else {
-            result.add(nums[startPtr]+"->"+nums[endPtr-1]);                
         }
         return result;
     }
